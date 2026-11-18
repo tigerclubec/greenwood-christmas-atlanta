@@ -37,7 +37,7 @@ export const party = {
     timeZone: "America/New_York",
     venueName: "Sapphire 786",
     venueAddress: "7130 Buford Hwy NE, Suite A-100, Atlanta, GA 30340",
-    rsvpBy: "December 9",
+    rsvpBy: "December 4",
     highlights: [
       { icon: "cocktail", label: "Christmas cocktails" },
       { icon: "cards", label: "Casino games" },
