@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+  /* Greenwood Star brand + a few Christmas accents */
+  --color-night: #2a0a10;
+  --color-night-deep: #170509;
+  --color-cream: #f7efe2;
+  --color-cream-soft: rgba(247, 239, 226, 0.68);
+  --color-red: #c8223e;
+  --color-red-deep: #8f1229;
+  --color-gold: #d9b56a;
+  --color-forest: #004b28;
+  --color-brand: #30b566;
+  --color-teal: #11715f;
+  --color-slate: #415e6d;
+  --color-frost: #e1e6da;
+  --color-ink: #1d1a17;
+  --color-ink-soft: #6b625a;
+  --color-paper: #fbf6ec;
+
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-script: "Great Vibes", "Snell Roundhand", cursive;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  background: var(--color-night-deep);
+  color: var(--color-cream);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+  background:
+    radial-gradient(1000px 760px at 70% 45%, rgba(255, 170, 90, 0.14), transparent 70%),
+    linear-gradient(180deg, #340c15 0%, #22070d 60%, #170509 100%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(217, 181, 106, 0.4);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ───────── tree ───────── */
+
+@keyframes twinkle {
+  0%, 100% { opacity: var(--lo, 0.45); }
+  50% { opacity: 1; }
+}
+@keyframes bulb-burst {
+  0% { transform: scale(1); filter: brightness(1); }
+  25% { transform: scale(2); filter: brightness(1.7); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+@keyframes sway {
+  from { transform: rotate(calc(var(--amp, 2deg) * -1)); }
+  to { transform: rotate(var(--amp, 2deg)); }
+}
+@keyframes star-pulse {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+@keyframes find-ring {
+  0% { transform: scale(0.7); opacity: 0.95; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes bauble-sway {
+  0%, 100% { transform: rotate(-1.2deg); }
+  50% { transform: rotate(1.2deg); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  50% { transform: translateX(7px); }
+  75% { transform: translateX(-4px); }
+}
+
+.bulb-glow { animation: twinkle var(--dur, 3s) ease-in-out var(--delay, 0s) infinite; }
+.bulb { transform-box: fill-box; transform-origin: center; }
+.bulb.burst { animation: bulb-burst 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) var(--bdelay, 0s) 1; }
+.ornament-sway { transform-origin: 50% 0; animation: sway var(--dur, 5s) ease-in-out var(--delay, 0s) infinite alternate; }
+.star-glow { transform-box: fill-box; transform-origin: center; animation: star-pulse 4.5s ease-in-out infinite; }
+.find-ring { animation: find-ring 1.6s ease-out infinite; }
+.bauble-sway { transform-origin: 50% 0; animation: bauble-sway 6s ease-in-out infinite; }
+.bauble-sway.paused { animation-play-state: paused; }
+.shake { animation: shake 0.4s ease-in-out 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bulb-glow, .ornament-sway, .star-glow, .find-ring, .bulb.burst, .bauble-sway, .shake {
+    animation: none !important;
+  }
+  .bulb-glow { opacity: 0.85; }
+}
+
+/* ───────── fields on the glass ───────── */
+
+.glass-input {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid var(--o-line);
+  background: var(--o-fill);
+  color: var(--o-ink);
+  text-align: center;
+  outline: none;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.glass-input::placeholder { color: var(--o-soft); }
+.glass-input:focus {
+  background: var(--o-fill-strong);
+  border-color: var(--o-ink);
+  box-shadow: 0 0 0 3px var(--o-glow);
+}
+.glass-input[aria-invalid="true"] {
+  border-color: #ffe08a;
+  box-shadow: 0 0 0 3px rgba(255, 224, 138, 0.45);
+}
+.glass-pill {
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border-radius: 999px;
+  border: 1px solid var(--o-line);
+  background: var(--o-fill);
+  color: var(--o-ink);
+  transition: all 0.18s;
+}
+.glass-pill:hover { background: var(--o-fill-strong); }
+.glass-pill[aria-checked="true"] {
+  background: var(--o-ink);
+  color: var(--o-on-ink);
+  border-color: var(--o-ink);
+}
+.glass-pill.invalid { border-color: #ffe08a; box-shadow: 0 0 0 3px rgba(255, 224, 138, 0.45); }
+
+/* admin form */
+.field {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(65, 94, 109, 0.3);
+  background: #fff;
+  padding: 0.7rem 0.9rem;
+  font-size: 1rem;
+  color: var(--color-ink);
+}
+.field:focus { outline: none; border-color: var(--color-teal); box-shadow: 0 0 0 3px rgba(17, 113, 95, 0.15); }
