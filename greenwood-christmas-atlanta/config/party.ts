@@ -41,7 +41,7 @@ export const party = {
     highlights: [
       { icon: "cocktail", label: "Christmas cocktails" },
       { icon: "cards", label: "Casino games" },
-      { icon: "music", label: "Live music" },
+      { icon: "photo", label: "Christmas photo booth" },
     ],
     maxGuests: 3,
   } satisfies PartyEvent as PartyEvent,
