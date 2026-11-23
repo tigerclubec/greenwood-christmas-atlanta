@@ -566,10 +566,10 @@ function Bauble({
               <div className="flex w-full flex-col items-center" style={{ gap: "2.6cqw", paddingTop: "2cqw" }}>
                 <input
                   className="glass-input font-medium"
-                  style={{ width: "72cqw", height: "11.5cqw", fontSize: "6cqw", paddingInline: "4cqw" }}
+                  style={{ width: "76cqw", height: "14cqw", fontSize: "7cqw", paddingInline: "4cqw" }}
                   value={form.fullName}
                   onChange={(e) => set("fullName", e.target.value)}
-                  placeholder="Your name"
+                  placeholder="Tap here, type your name"
                   autoComplete="name"
                   aria-invalid={!!errors.fullName}
                   aria-label="Full name"
@@ -613,10 +613,10 @@ function Bauble({
                   <div className="flex w-full items-center justify-center">
                     <input
                       className="glass-input font-medium"
-                      style={{ width: "72cqw", height: "10.5cqw", fontSize: "5.1cqw", paddingInline: "4cqw" }}
+                      style={{ width: "76cqw", height: "13cqw", fontSize: "6.4cqw", paddingInline: "4cqw" }}
                       value={form.guestName}
                       onChange={(e) => set("guestName", e.target.value)}
-                      placeholder="Guest’s name"
+                      placeholder="Guest’s full name"
                       autoComplete="off"
                       aria-invalid={!!errors.guestName}
                       aria-label="Guest's name"
