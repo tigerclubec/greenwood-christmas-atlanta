@@ -105,26 +105,28 @@ body {
 .glass-input {
   width: 100%;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: rgba(255, 249, 238, 0.95);
-  color: #2a1a14;
+  border: 3px solid #5a0614;
+  background: #ffffff;
+  color: #1a0e0a;
+  font-weight: 600;
+  caret-color: #b51d36;
   text-align: center;
   outline: none;
-  box-shadow: 0 2px 8px -2px rgba(40, 0, 10, 0.35), inset 0 1px 2px rgba(120, 80, 40, 0.12);
+  box-shadow: 0 4px 14px -2px rgba(40, 0, 10, 0.55), inset 0 2px 4px rgba(90, 6, 20, 0.12);
   transition: box-shadow 0.2s, border-color 0.2s;
 }
-.glass-input::placeholder { color: #9a8a7a; }
+.glass-input::placeholder { color: #6b4f45; opacity: 1; font-weight: 500; }
 .glass-input:focus {
-  border-color: #c9a45f;
-  box-shadow: 0 0 0 3px rgba(246, 210, 122, 0.6), 0 2px 8px -2px rgba(40, 0, 10, 0.35);
+  border-color: #0f5a35;
+  box-shadow: 0 0 0 4px #f6d27a, 0 0 0 7px rgba(15, 90, 53, 0.55), 0 4px 14px -2px rgba(40, 0, 10, 0.55);
 }
 .glass-input[aria-invalid="true"] {
   border-color: #f2b705;
-  box-shadow: 0 0 0 3px rgba(255, 214, 90, 0.75);
+  box-shadow: 0 0 0 4px rgba(255, 214, 90, 0.9);
 }
 .glass-pill {
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 3px solid #5a0614;
   background: rgba(255, 249, 238, 0.9);
   color: #2a1a14;
   box-shadow: 0 2px 8px -2px rgba(40, 0, 10, 0.35);
