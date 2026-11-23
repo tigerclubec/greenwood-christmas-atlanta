@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@theme {
+  /* Greenwood Star brand + a few Christmas accents */
+  --color-night: #2a0a10;
+  --color-night-deep: #170509;
+  --color-cream: #f7efe2;
+  --color-cream-soft: rgba(247, 239, 226, 0.68);
+  --color-red: #c8223e;
+  --color-red-deep: #8f1229;
+  --color-gold: #d9b56a;
+  --color-forest: #004b28;
+  --color-brand: #30b566;
+  --color-teal: #11715f;
+  --color-slate: #415e6d;
+  --color-frost: #e1e6da;
+  --color-ink: #1d1a17;
+  --color-ink-soft: #6b625a;
+  --color-paper: #fbf6ec;
+
+  --font-serif: "EB Garamond Variable", "EB Garamond", Georgia, serif;
+  --font-script: "Allura", cursive;
+  --font-sans: "EB Garamond Variable", "EB Garamond", Georgia, serif;
+}
+
+html {
+  background: #4a0814;
+  color: var(--color-cream);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+  /* rich Christmas red */
+  background:
+    radial-gradient(900px 700px at 30% 45%, rgba(255, 170, 90, 0.18), transparent 70%),
+    radial-gradient(1200px 900px at 70% 40%, #a3182f 0%, #7d1024 45%, #560a18 80%, #3a0610 100%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(217, 181, 106, 0.4);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ───────── tree ───────── */
+
+@keyframes twinkle {
+  0%, 100% { opacity: var(--lo, 0.45); }
+  50% { opacity: 1; }
+}
+@keyframes bulb-burst {
+  0% { transform: scale(1); filter: brightness(1); }
+  25% { transform: scale(2); filter: brightness(1.7); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+@keyframes sway {
+  from { transform: rotate(calc(var(--amp, 2deg) * -1)); }
+  to { transform: rotate(var(--amp, 2deg)); }
+}
+@keyframes star-pulse {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+@keyframes find-ring {
+  0% { transform: scale(0.7); opacity: 0.95; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes bauble-sway {
+  0%, 100% { transform: rotate(-1.2deg); }
+  50% { transform: rotate(1.2deg); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  50% { transform: translateX(7px); }
+  75% { transform: translateX(-4px); }
+}
+
+.bulb-glow { animation: twinkle var(--dur, 3s) ease-in-out var(--delay, 0s) infinite; }
+.bulb { transform-box: fill-box; transform-origin: center; }
+.bulb.burst { animation: bulb-burst 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) var(--bdelay, 0s) 1; }
+.ornament-sway { transform-origin: 50% 0; animation: sway var(--dur, 5s) ease-in-out var(--delay, 0s) infinite alternate; }
+.star-glow { transform-box: fill-box; transform-origin: center; animation: star-pulse 4.5s ease-in-out infinite; }
+.find-ring { animation: find-ring 1.6s ease-out infinite; }
+.bauble-sway { transform-origin: 50% 0; animation: bauble-sway 6s ease-in-out infinite; }
+.bauble-sway.paused { animation-play-state: paused; }
+.shake { animation: shake 0.4s ease-in-out 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bulb-glow, .ornament-sway, .star-glow, .find-ring, .bulb.burst, .bauble-sway, .shake {
+    animation: none !important;
+  }
+  .bulb-glow { opacity: 0.85; }
+}
+
+/* ───────── fields on the ornament: solid cream, dark text ───────── */
+
+.glass-input {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 249, 238, 0.95);
+  color: #2a1a14;
+  text-align: center;
+  outline: none;
+  box-shadow: 0 2px 8px -2px rgba(40, 0, 10, 0.35), inset 0 1px 2px rgba(120, 80, 40, 0.12);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.glass-input::placeholder { color: #9a8a7a; }
+.glass-input:focus {
+  border-color: #c9a45f;
+  box-shadow: 0 0 0 3px rgba(246, 210, 122, 0.6), 0 2px 8px -2px rgba(40, 0, 10, 0.35);
+}
+.glass-input[aria-invalid="true"] {
+  border-color: #f2b705;
+  box-shadow: 0 0 0 3px rgba(255, 214, 90, 0.75);
+}
+.glass-pill {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 249, 238, 0.9);
+  color: #2a1a14;
+  box-shadow: 0 2px 8px -2px rgba(40, 0, 10, 0.35);
+  transition: background 0.18s, color 0.18s;
+}
+.glass-pill:hover { background: #fff; }
+.glass-pill[aria-checked="true"] {
+  background: #0f5a35;
+  border-color: #0f5a35;
+  color: #fff;
+}
+.glass-pill.invalid { border-color: #f2b705; box-shadow: 0 0 0 3px rgba(255, 214, 90, 0.75); }
+
+/* ───────── tree position: big on the left while RSVPing, then centred ───────── */
+.tree-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max(112vw, calc((100dvh - 40px) * 0.8333));
+  max-width: 1400px;
+  transition: left 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), top 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.tree-wrap.revealed {
+  top: 64px !important;
+  width: min(100vw, calc((100dvh - 120px) * 0.8333));
+}
+@media (min-width: 1024px) {
+  /* while RSVPing: a big, zoomed-in close-up of the tree on the left */
+  .tree-wrap {
+    left: -27vw;
+    top: 1vh !important;
+    width: max(64vw, calc(100dvh * 1.05));
+    transform: translate(var(--sx, 0px), var(--sy, 0px));
+  }
+  /* after RSVPing: glide to the centre and zoom out to the whole tree */
+  .tree-wrap.revealed {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 70px !important;
+    width: calc((100dvh - 90px) * 0.8333);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tree-wrap { transition: none; }
+}
+
+/* admin form */
+.field {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(65, 94, 109, 0.3);
+  background: #fff;
+  padding: 0.7rem 0.9rem;
+  font-size: 1rem;
+  color: var(--color-ink);
+}
+.field:focus { outline: none; border-color: var(--color-teal); box-shadow: 0 0 0 3px rgba(17, 113, 95, 0.15); }
+
+/* the ornament takes whatever height is left, so nothing needs scrolling */
+.bauble-size { width: clamp(190px, min(82vw, calc((100dvh - 388px) / 1.42)), 380px); }
+@media (min-width: 1024px) {
+  .bauble-size { width: clamp(300px, min(calc((100dvh - 120px) / 1.4), 38vw), 600px); }
+}
