@@ -566,7 +566,7 @@ function Bauble({
               <div className="flex w-full flex-col items-center" style={{ gap: "2.6cqw", paddingTop: "2cqw" }}>
                 <input
                   className="glass-input font-medium"
-                  style={{ width: "76cqw", height: "14cqw", fontSize: "7cqw", paddingInline: "4cqw" }}
+                  style={{ width: "78cqw", height: "16cqw", fontSize: "8cqw", paddingInline: "4cqw" }}
                   value={form.fullName}
                   onChange={(e) => set("fullName", e.target.value)}
                   placeholder="Type your name"
@@ -596,7 +596,7 @@ function Bauble({
                 />
                 {form.attending && (
                   <div className="flex flex-col items-center" style={{ gap: "1.6cqw" }}>
-                    <p className="font-medium" style={{ fontSize: "4.4cqw" }}>Bringing a +1?</p>
+                    <p className="font-medium" style={{ fontSize: "5cqw" }}>Bringing a +1?</p>
                     <Pills
                       label="Bringing a +1?"
                       value={form.plusOne === null ? "" : form.plusOne ? "yes" : "no"}
@@ -613,7 +613,7 @@ function Bauble({
                   <div className="flex w-full items-center justify-center">
                     <input
                       className="glass-input font-medium"
-                      style={{ width: "76cqw", height: "13cqw", fontSize: "6.4cqw", paddingInline: "4cqw" }}
+                      style={{ width: "78cqw", height: "15cqw", fontSize: "7.4cqw", paddingInline: "4cqw" }}
                       value={form.guestName}
                       onChange={(e) => set("guestName", e.target.value)}
                       placeholder="Guest’s full name"
@@ -668,7 +668,7 @@ function Pills({
           }}
           data-v={o.value}
           className={`glass-pill whitespace-nowrap font-medium ${invalid ? "invalid" : ""}`}
-          style={{ fontSize: "4.8cqw", height: "9.4cqw", minWidth: "28cqw", paddingInline: "4cqw" }}
+          style={{ fontSize: "5.6cqw", height: "11cqw", minWidth: "30cqw", paddingInline: "4cqw" }}
         >
           {o.label}
         </button>
