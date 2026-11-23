@@ -569,7 +569,7 @@ function Bauble({
                   style={{ width: "76cqw", height: "14cqw", fontSize: "7cqw", paddingInline: "4cqw" }}
                   value={form.fullName}
                   onChange={(e) => set("fullName", e.target.value)}
-                  placeholder="Tap here, type your name"
+                  placeholder="Type your name"
                   autoComplete="name"
                   aria-invalid={!!errors.fullName}
                   aria-label="Full name"
