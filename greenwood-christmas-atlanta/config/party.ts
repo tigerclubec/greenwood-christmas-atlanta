@@ -38,12 +38,12 @@ export const party = {
     venueName: "Sapphire 786",
     venueAddress: "7130 Buford Hwy NE, Suite A-100, Atlanta, GA 30340",
     rsvpBy: "December 4",
-   highlights: [
-  { icon: "food", label: "Christmas dinner" },
-  { icon: "cocktail", label: "Cocktails" },
-  { icon: "cards", label: "Casino games" },
-  { icon: "gift", label: "Prizes" },
-],
+    highlights: [
+      { icon: "food", label: "Christmas dinner" },
+      { icon: "cocktail", label: "Cocktails" },
+      { icon: "cards", label: "Casino games" },
+      { icon: "gift", label: "Prizes" },
+    ],
     maxGuests: 1,
   } satisfies PartyEvent as PartyEvent,
 };
